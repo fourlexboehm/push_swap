@@ -1,22 +1,18 @@
 NAME = push_swap
-CFLAGS = -Wall -Wextra -Werror
-SRCS = srcs/push_swap.c
+CFLAGS = -Wall -Wextra -Werror -g
+SRCS = srcs/*.c
 INCLUDES = ./includes/
 LIBFT = ./libft/
 LIBFT_A = ./libft/libft.a
 
-OBJS = $(SRCS:.c=.o)
 
-.c.o:
-	gcc $(CFLAGS) -g -c $< -o $(<:.c=.o) -I$(INCLUDES)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	make -C $(LIBFT)
+	make -C $(LIBFT) bonus
 	cp $(LIBFT_A) $(NAME)
-	gcc -c $(CFLAGS) -I$(INCLUDES) $(SRCS)
-	ar -rcs $(NAME) $(OBJS)
+	gcc $(CFLAGS) $(SRCS) $(LIBFT_A) -o $(NAME)
 
 clean:
 	make clean -C $(LIBFT)

@@ -19,7 +19,7 @@ t_list	*ft_lstnew(int content)
 	node = (t_list *)malloc(sizeof(t_list));
 	if (node == NULL)
 		return (NULL);
-	node.content = content;
+	node->content = content;
 	node->next = NULL;
 	return (node);
 }
