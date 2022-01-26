@@ -1,5 +1,17 @@
 #include "../includes/push_swap.h"
 
+void	ft_lst_free(t_list	**lst)
+{
+	t_list *temp;
+	temp = *lst;
+	while (*lst)
+	{
+		temp = temp->next;
+		free(*lst);
+		*lst = temp;
+	}
+}
+
 void	ft_lst_copy(t_list **input, t_list **output)
 /* will copy the contents of a list into a new list */
 {

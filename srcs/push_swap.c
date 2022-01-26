@@ -1,6 +1,5 @@
 #include "../includes/push_swap.h"
 
-
 static void	small_sort(int argc, t_list **stack_a, t_list **stack_b)
 /* will determine which small_sort function to call */
 {
@@ -10,46 +9,45 @@ static void	small_sort(int argc, t_list **stack_a, t_list **stack_b)
 			sa(stack_a, true);
 	}
 	else if (argc == 3)
-		ft_sort_three(stack_a);
-	else if (argc == 4)
-		ft_sort_four(stack_a, stack_b);
-	else if (argc == 5)
-		ft_sort_five(stack_a, stack_b);
+		sort_three(stack_a);
+//	else if (argc == 4)
+//		ft_sort_four(stack_a, stack_b);
+//	else if (argc == 5)
+//		ft_sort_five(stack_a, stack_b);
 }
 
-
-static void	big_sort(int argc, t_list	**stack_a, t_list	**stack_b)
-/* will sort if 5 < numbers >= 100
-will not always work if less than 25 numbers */
-{
-	t_quart	*quart;
-
-	quart = ft_calloc(1, sizeof(t_quart));
-	ft_quarters(&quart, argc, stack_a);
-	ft_first(argc, stack_a, stack_b, &quart);
-	ft_second(argc, stack_a, stack_b, &quart);
-	ft_third_small(argc, stack_a, stack_b, &quart);
-	ft_last(argc, stack_a, stack_b);
-	free(quart);
-}
-
-void	big_big_sort(int argc, t_list	**stack_a, t_list	**stack_b)
-/* will sort if 100 < numbers */
-{
-	t_quart	*quart;
-
-	quart = ft_calloc(1, sizeof(t_quart));
-	ft_eigths(&quart, argc, stack_a);
-	ft_first(argc, stack_a, stack_b, &quart);
-	ft_second(argc, stack_a, stack_b, &quart);
-	ft_third_big(argc, stack_a, stack_b, &quart);
-	ft_fourth(argc, stack_a, stack_b, &quart);
-	ft_fifth(argc, stack_a, stack_b, &quart);
-	ft_sixth(argc, stack_a, stack_b, &quart);
-	ft_seventh(argc, stack_a, stack_b, &quart);
-	ft_last(argc, stack_a, stack_b);
-	free(quart);
-}
+//static void	big_sort(int argc, t_list	**stack_a, t_list	**stack_b)
+///* will sort if 5 < numbers >= 100
+//will not always work if less than 25 numbers */
+//{
+//	t_quart	*quart;
+//
+//	quart = ft_calloc(1, sizeof(t_quart));
+//	ft_quarters(&quart, argc, stack_a);
+//	ft_first(argc, stack_a, stack_b, &quart);
+//	ft_second(argc, stack_a, stack_b, &quart);
+//	ft_third_small(argc, stack_a, stack_b, &quart);
+//	ft_last(argc, stack_a, stack_b);
+//	free(quart);
+//}
+//
+//void	big_big_sort(int argc, t_list	**stack_a, t_list	**stack_b)
+///* will sort if 100 < numbers */
+//{
+//	t_quart	*quart;
+//
+//	quart = ft_calloc(1, sizeof(t_quart));
+//	ft_eigths(&quart, argc, stack_a);
+//	ft_first(argc, stack_a, stack_b, &quart);
+//	ft_second(argc, stack_a, stack_b, &quart);
+//	ft_third_big(argc, stack_a, stack_b, &quart);
+//	ft_fourth(argc, stack_a, stack_b, &quart);
+//	ft_fifth(argc, stack_a, stack_b, &quart);
+//	ft_sixth(argc, stack_a, stack_b, &quart);
+//	ft_seventh(argc, stack_a, stack_b, &quart);
+//	ft_last(argc, stack_a, stack_b);
+//	free(quart);
+//}
 
 int main(int argc, char **argv)
 {
@@ -59,6 +57,7 @@ int main(int argc, char **argv)
 	int i;
 
 	stack_a = NULL;
+	stack_b = NULL;
 	i = 0;
 	if (argc < 2)
 	{
@@ -73,8 +72,8 @@ int main(int argc, char **argv)
 	}
 		if (argc <= 5)
 			small_sort(argc, stack_a, stack_b);
-		else if (argc <= 100)
-			big_sort(argc, stack_a, stack_b);
+//		else if (argc <= 100)
+//			big_sort(argc, stack_a, stack_b);
 		else
 //			ft_big_big_sort(argc, stack_a, stack_a)
 			ft_printf("Lulwut u want me to sort that?...");

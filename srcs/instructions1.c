@@ -1,6 +1,5 @@
-
-
 #include "../includes/push_swap.h"
+
 void	sa(t_list **stack_a, bool flag)
 /*swap the first 2 elements at the top of stack a.
  * Do nothing if there is only one or no elements*/
@@ -45,10 +44,9 @@ void	ss(t_list **stack_a, t_list **stack_b)
 
 }
 
-void	pa(t_list **stack_a, t_list **stack_b, bool flag)
+void	pa(t_list **stack_a, t_list **stack_b)
 /*push a - take the first element at the top of b and put it at the top of a. Do
 		nothing if b is empty.*/
-
 {
 	t_list	*temp;
 
@@ -61,7 +59,8 @@ void	pa(t_list **stack_a, t_list **stack_b, bool flag)
 		write(1, "pa\n", 3);
 	}
 }
-void	pb(t_list **stack_a, t_list **stack_b, bool flag)
+
+void	pb(t_list **stack_a, t_list **stack_b)
 /*push b - take the first element at the top of a and put it at the top of b. Do
 		nothing if a is empty.*/
 {
