@@ -16,6 +16,7 @@ the last one.*/
 	temp->next = last;
 	if (flag)
 		write(1, "ra\n", 3);
+    int i;
 }
 
 void	rb(t_list **stack_b, bool flag)

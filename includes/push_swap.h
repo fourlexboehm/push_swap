@@ -13,6 +13,12 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "../libft/libft.h"
+
+typedef struct {
+	int s;
+	int m;
+	int l;
+}	Median;
 void	ft_lstdel_front(t_list	**lst);
 void	ft_lst_copy(t_list **input, t_list **output);
 void	sa(t_list **stack_a, bool flag);
