@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_listadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboehm <aboehm@42adel.org>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,7 +14,7 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (new == NULL || lst == NULL)
+	if (new == NULL)
 		return ;
 	new->next = *lst;
 	*lst = new;

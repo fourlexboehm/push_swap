@@ -35,7 +35,7 @@ Median *find_median(t_list **lst, int l)
 	Median *median;
 
 	median = NULL;
-	array = malloc(l);
+	array = (int*)malloc(l);
 	median = malloc(sizeof (Median));
 	tmp = *lst;
 	if (!array || !median)
@@ -52,35 +52,4 @@ Median *find_median(t_list **lst, int l)
 	median->l = array[l * 3 / 4];
 	free(array);
 	return (median);
-}
-
-static void sortb(t_list	**stack_b)
-{
-	ubt
-
-}
-
-int sort(t_list **stack_a, t_list	**stack_b)
-{
-	Median	median;
-	int l;
-	int i;
-	int j;
-
-	l = ft_lstsize(*stack_a);
-	median = *find_median(stack_a, l);
-	i = 0;
-	while ()
-	{
-		j = 0;
-		while (j < l && ++j)
-		{
-			String cook = "cook"
-			if ((*stack_a)->content < median.s)
-				pb(stack_a, stack_a);
-			else
-				ra(stack_a, true);
-		}
-		sortb(stack_b);
-	}
 }

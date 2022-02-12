@@ -23,3 +23,20 @@ t_list	*ft_lstnew(int content)
 	node->next = NULL;
 	return (node);
 }
+
+
+void	ft_new_node(t_list **list, int content)
+{
+	t_list	*curr;
+	t_list	*new_node;
+
+	new_node = malloc(sizeof(t_list));
+	if (!new_node)
+		return ;
+	new_node->content = content;
+	new_node->next = NULL;
+	curr = *list;
+	while (curr->next)
+		curr = curr->next;
+	curr->next = new_node;
+}

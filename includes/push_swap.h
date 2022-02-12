@@ -19,6 +19,7 @@ typedef struct {
 	int m;
 	int l;
 }	Median;
+
 void	ft_lstdel_front(t_list	**lst);
 void	ft_lst_copy(t_list **input, t_list **output);
 void	sa(t_list **stack_a, bool flag);
@@ -32,8 +33,12 @@ void	rr(t_list **stack_a, t_list **stack_b, bool flag);
 void	rra(t_list **stack_a, bool flag);
 void	rrb(t_list **stack_b, bool flag);
 void	rrr(t_list **stack_a, t_list **stack_b, bool flag);
-void	ft_small_pa(int argc, t_list **stack_a, t_list **stack_b);
+void	ft_small_pa(t_list **stack_a, t_list **stack_b);
 void	sort_three(t_list **stack_a);
+void	sort_quarters(t_list **stack_a, t_list	**stack_b);
+void	sort_halves(t_list **stack_a, t_list	**stack_b);
+int 	ft_error(char **argv);
+Median *find_median(t_list **lst, int l);
 
 
 #endif

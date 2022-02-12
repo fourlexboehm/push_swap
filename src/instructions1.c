@@ -69,7 +69,10 @@ void	pb(t_list **stack_a, t_list **stack_b)
 	if (*stack_a)
 	{
 		temp = (*stack_a)->next;
-		(*stack_a)->next = *stack_b;
+		if (stack_b)
+			(*stack_a)->next = *stack_b;
+		else
+			(*stack_a)->next = NULL;
 		*stack_b = *stack_a;
 		*stack_a = temp;
 		write(1, "pb\n", 3);
