@@ -8,11 +8,11 @@ the last one.*/
 	t_list	*last;
 
 	last = *stack_a;
-	temp = last;
+	temp = *stack_a;
 	*stack_a =  (*stack_a)->next;
-	last->next = NULL;
 	while (temp->next)
 		temp = temp->next;
+	last->next = NULL;
 	temp->next = last;
 	if (flag)
 		write(1, "ra\n", 3);
@@ -28,9 +28,9 @@ the last one.*/
 	last = *stack_b;
 	temp = last;
 	*stack_b =  (*stack_b)->next;
-	last->next = NULL;
 	while (temp->next)
 		temp = temp->next;
+	last->next = NULL;
 	temp->next = last;
 	if (flag)
 		write(1, "rb\n", 3);
@@ -46,6 +46,7 @@ rr : ra and rb at the same time. */
 		write(1, "rr\n", 3);
 }
 void    rra(t_list **list, bool flag)
+/* Last element becomes first*/
 {
 	t_list *curr;
 	t_list *prev;
@@ -70,13 +71,19 @@ void	rrb(t_list **stack_b, bool flag)
 	t_list *temp;
 	t_list	*first;
 
-
+	if ((*stack_b)->next == NULL)
+		return ;
 	temp = *stack_b;
 	first = temp;
 	while (first->next)
+	{
 		first = first->next;
-	while (temp->next->next)
-		temp = temp->next;
+	}
+	if (temp->next)
+	{
+		while (temp->next->next)
+			temp = temp->next;
+	}
 	temp->next = NULL;
 	ft_lstadd_front(stack_b, first);
 	if (flag)

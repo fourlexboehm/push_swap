@@ -20,6 +20,7 @@ t_list	*ft_lstnew(int content)
 	if (node == NULL)
 		return (NULL);
 	node->content = content;
+	node->flag = 0;
 	node->next = NULL;
 	return (node);
 }
@@ -34,6 +35,7 @@ void	ft_new_node(t_list **list, int content)
 	if (!new_node)
 		return ;
 	new_node->content = content;
+	new_node->flag = 0;
 	new_node->next = NULL;
 	curr = *list;
 	while (curr->next)

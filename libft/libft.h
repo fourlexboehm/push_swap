@@ -85,4 +85,6 @@ char	*ft_strndup(const char *s1, size_t n);
 void	ft_new_node(t_list **list, int content);
 
 
+
+
 #endif

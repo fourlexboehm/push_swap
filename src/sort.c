@@ -5,66 +5,73 @@ void sort_halves(t_list **stack_a, t_list	**stack_b)
 {
 	Median	median;
 	int l;
-	int j;
 
 	l = ft_lstsize(*stack_a);
 	median = *find_median(stack_a, l);
-	j = 1;
-	while (j < l)
+	while ((*stack_a)->flag == 0)
 	{
-		if ((*stack_a)->content < median.m)
+		if ((*stack_a)->content <= median.m)
 			pb(stack_a, stack_b);
-		else
+		else if ((*stack_a)->flag == 0)
+		{
+			(*stack_a)->flag = -1;
 			ra(stack_a, true);
-		j++;
+		}
 	}
-	ft_small_pa(stack_a, stack_b);
-	j = 0;
-	while (j < 1/2 * l && ++j)
-	{
-		rra(stack_a, true);
+	while (*stack_b)
+		ft_small_pa(stack_a, stack_b);
+	while ((*stack_a)->flag < 1)
 		pb(stack_a, stack_b);
-	}
-	ft_small_pa(stack_a, stack_b);
+	while (*stack_b)
+		ft_small_pa(stack_a, stack_b);
+	while (ft_find_smallest(stack_a, (*stack_a)->content) > 0)
+		rra(stack_a, true);
+	//ft_find_smallest(stack_a, (while *stack));
 }
 
 void sort_quarters(t_list **stack_a, t_list	**stack_b)
 {
 	Median	median;
 	int l;
-	int j;
 
 	l = ft_lstsize(*stack_a);
 	median = *find_median(stack_a, l);
-	j = 1;
-	while (j < l)
+	while ((*stack_a)->flag == 0)             //First quarter
 	{
-		if ((*stack_a)->content < median.s)
+		if ((*stack_a)->content <= median.s)
 			pb(stack_a, stack_b);
-		else
+		else if ((*stack_a)->flag == 0)
+		{
+			(*stack_a)->flag = -1;
 			ra(stack_a, true);
-		j++;
+		}
 	}
-	ft_small_pa(stack_a, stack_b);
-	j = 0;
-	while (j < 3/4 * l && ++j)
+	while (*stack_b)
+		ft_small_pa(stack_a, stack_b);
+	while ((*stack_a)->flag < 1)              //second quarter
 	{
-		rra(stack_a, true);
-		if ((*stack_a)->content < median.m)
+		if ((*stack_a)->content <= median.m && (*stack_a)->flag < 1)
 			pb(stack_a, stack_b);
+		if ((*stack_a)->content > median.m)
+			ra(stack_a, true);
 	}
-	ft_small_pa(stack_a, stack_b);
-	while (j < 1/2 * l && ++j)
+	while ((*stack_a)->flag == 1)
+		ra(stack_a, true);
+	while (*stack_b)
+		ft_small_pa(stack_a, stack_b);
+	while ((*stack_a)->flag < 1)			  //third quarter
 	{
-		rra(stack_a, true);
-		if ((*stack_a)->content < median.l)
+		if ((*stack_a)->content <= median.l)
 			pb(stack_a, stack_b);
+		else if ((*stack_a)->flag < 1)
+			ra(stack_a, true);
 	}
-	ft_small_pa(stack_a, stack_b);
-	while (j < 1/4 * l && ++j)
-	{
+	while (ft_lstlast(*stack_a)->flag < 1)
 		rra(stack_a, true);
+	while (*stack_b)
+		ft_small_pa(stack_a, stack_b);
+	while ((*stack_a)->flag < 1)			//fourth quarter
 		pb(stack_a, stack_b);
-	}
-	ft_small_pa(stack_a, stack_b);
+	while (*stack_b)
+		ft_small_pa(stack_a, stack_b);
 }

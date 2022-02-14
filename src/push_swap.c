@@ -51,19 +51,19 @@ static void	small_sort(int argc, t_list **stack_a)
 }
 
 
-static void	ft_init_list(t_list **lista, char **argv)
+static void	ft_init_list(t_list **stack_a, char **argv)
 {
 	int		i;
 
-	*lista = malloc(sizeof(t_list));
-	if (!(*lista))
+	*stack_a = malloc(sizeof(t_list));
+	if (!(*stack_a))
 		return ;
 	i = 1;
-	(*lista)->content = ft_atoi(argv[i]);
-	(*lista)->next = NULL;
+	(*stack_a)->content = ft_atoi(argv[i]);
+	(*stack_a)->next = NULL;
 	while (argv[++i])
 	{
-		ft_new_node(lista, ft_atoi(argv[i]));
+		ft_new_node(stack_a, ft_atoi(argv[i]));
 	}
 }
 
@@ -84,7 +84,7 @@ int		main(int argc, char **argv)
 	ft_init_list(&stack_a, argv);
 	if (argc < 5)
 		small_sort(argc, &stack_a);
-	else if (argc < 10)
+	else if (argc < 15)
 		sort_halves(&stack_a, &stack_b);
 	else
 		sort_quarters(&stack_a, &stack_b);

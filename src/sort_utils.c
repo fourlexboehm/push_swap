@@ -66,13 +66,13 @@ void	ft_small_pa(t_list **stack_a, t_list **stack_b)
 	{
 		while (location_small != 0 && *stack_b != NULL)
 		{
-			if (ft_find_largest(stack_b, -2147483648) == 0)
+			/*if (ft_find_largest(stack_b, -2147483648) == 0)
 			{
 				pa(stack_a, stack_b);
-				//(*stack_a)->flag = -1;
+				(*stack_a)->flag = 1;
 				location_small--;
 				continue ;
-			}
+			}*/
 			rb(stack_b, 1);
 			location_small--;
 		}
@@ -81,26 +81,28 @@ void	ft_small_pa(t_list **stack_a, t_list **stack_b)
 	{
 		while (location_small < argc && *stack_b != NULL)
 		{
-			if (ft_find_largest(stack_b, -2147483648) == 0)
+			/*if (ft_find_largest(stack_b, -2147483648) == 0)
 			{
 				pa(stack_a, stack_b);
-		//		(*stack_a)->flag = -1;
+				ra(stack_a, true);
+				(*stack_a)->flag = 1;
 				continue ;
-			}
+			}*/
 			rrb(stack_b, 1);
 			location_small++;
 		}
 	}
 	pa(stack_a, stack_b);
-	//(*stack_a)->flag = -1;
+	(*stack_a)->flag = 1;
 	ra(stack_a, 1);
 }
 
-void	ft_large_pa(int argc, t_list **stack_a, t_list **stack_b)
+void	ft_large_pa(t_list **stack_a, t_list **stack_b)
 /* will find the shortest way to rotate the largest value of the stack to the top
 ** will sort smallest value if encountered on the way */
 {
 	int	location_high;
+	int	argc;
 
 	argc = ft_lstsize(*stack_b);
 	location_high = ft_find_largest(stack_b, -2147483648);
@@ -111,7 +113,7 @@ void	ft_large_pa(int argc, t_list **stack_a, t_list **stack_b)
 			if (ft_find_smallest(stack_b, 2147483647) == 0)
 			{
 				pa(stack_a, stack_b);
-				(*stack_a)->flag = -1;
+				(*stack_a)->flag = 1;
 				ra(stack_a, 1);
 				location_high--;
 				continue ;
@@ -126,7 +128,9 @@ void	ft_large_pa(int argc, t_list **stack_a, t_list **stack_b)
 			if (ft_find_smallest(stack_b, 2147483647) == 0)
 			{
 				pa(stack_a, stack_b);
-				(*stack_a)->flag = -1;
+				(*stack_a)->flag = 1;
+				if (*stack_b == NULL)
+					return ;
 				ra(stack_a, 1);
 				continue ;
 			}
