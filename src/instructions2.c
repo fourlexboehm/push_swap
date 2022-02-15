@@ -87,5 +87,5 @@ void	rrb(t_list **stack_b, bool flag)
 	temp->next = NULL;
 	ft_lstadd_front(stack_b, first);
 	if (flag)
-		write(1, "rra\n", 4);
+		write(1, "rrb\n", 4);
 }

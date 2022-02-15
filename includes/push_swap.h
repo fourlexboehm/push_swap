@@ -15,9 +15,13 @@
 # include "../libft/libft.h"
 
 typedef struct {
+	int	xs;
 	int s;
+	int sm;
 	int m;
+	int ml;
 	int l;
+	int xl;
 }	Median;
 
 void	ft_lstdel_front(t_list	**lst);
@@ -38,9 +42,12 @@ void	ft_large_pa(t_list **stack_a, t_list **stack_b);
 void	sort_three(t_list **stack_a);
 void	sort_quarters(t_list **stack_a, t_list	**stack_b);
 void	sort_halves(t_list **stack_a, t_list	**stack_b);
+void	sort_eighths(t_list **stack_a, t_list	**stack_b);
 int 	ft_error(char **argv);
 Median *find_median(t_list **lst, int l);
 int	ft_find_smallest(t_list **stack, int x);
+void	ft_push_smallest_a(t_list **stack_a, t_list **stack_b)
+
 
 
 #endif

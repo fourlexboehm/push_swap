@@ -1,7 +1,7 @@
 NAME = push_swap
 #CFLAGS = -g
 CFLAGS = -Wall -Wextra -Werror -g
-SRC = src/instructions1.c src/instructions2.c src/instructions3.c src/list.c src/push_swap.c src/sort.c src/sort_utils.c src/error_handling.c src/median.c
+SRC = src/instructions1.c src/instructions2.c src/instructions3.c src/list.c src/push_swap.c src/sort.c src/sort_utils.c src/error_handling.c src/median.c src/sort_huge.c
 INCLUDES = ./includes/
 LIBFT = ./libft/
 LIBFT_A = ./libft/libft.a
@@ -19,6 +19,7 @@ $(NAME): $(OBJECTS)
 clean:
 	make clean -C $(LIBFT)
 	rm -rf $(OBJS)
+	rm -rf src/*.o
 
 fclean: clean
 	rm -rf $(NAME)

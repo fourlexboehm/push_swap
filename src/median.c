@@ -50,6 +50,11 @@ Median *find_median(t_list **lst, int l)
 	median->s = array[l / 4];
 	median->m = array[l / 2];
 	median->l = array[l * 3 / 4];
+
+	median->xs = array[l / 8];
+	median->sm = array[l * 3 / 8];
+	median->ml = array[l * 5 / 8];
+	median->xl = array[l * 7 / 8];
 	free(array);
 	return (median);
 }

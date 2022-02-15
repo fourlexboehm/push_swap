@@ -37,24 +37,36 @@ static void	sort3(t_list **stack_a)
 	}
 }
 
-
+void	ft_sort_five(t_list **stack_a, t_list **stack_b)
+/* this function will sort by ascending order into stack_a
+** only works if there is 5 numbers */
+{
+	ft_push_smallest_a(stack_a, stack_b);
+	ft_push_smallest_a(stack_a, stack_b);
+	sort3(stack_a);
+	pa(stack_a, stack_b);
+	pa(stack_a, stack_b);
+}
 static void	small_sort(int argc, t_list **stack_a)
 /* will determine which small_sort function to call */
 {
-	if (argc == 3)
-	{
-		if ((*stack_a)->content > (*stack_a)->next->content)
-			sa(stack_a, true);
-	}
-	else if (argc == 4)
-		sort3(stack_a);
+
 }
-
-
+void	ft_sort_five(t_stack **stack_a, t_stack **stack_b)
+/* this function will sort by ascending order into stack_a
+** only works if there is 5 numbers */
+{
+	ft_push_smallest_a(stack_a, stack_b);
+	ft_push_smallest_a(stack_a, stack_b);
+	ft_sort_three(stack_a);
+	ft_pa(stack_a, stack_b);
+	ft_pa(stack_a, stack_b);
+}
 static void	ft_init_list(t_list **stack_a, char **argv)
 {
 	int		i;
 
+	ft_error(argv);
 	*stack_a = malloc(sizeof(t_list));
 	if (!(*stack_a))
 		return ;
@@ -71,21 +83,27 @@ int		main(int argc, char **argv)
 {
 	t_list *stack_a;
 	t_list *stack_b;
-	int i;
 
 	stack_b = NULL;
-	i = 0;
 	if (argc < 2)
 	{
 		ft_printf("Include n to be sorted as parameters.");
 		return (0);
 	}
-	ft_error(argv);
 	ft_init_list(&stack_a, argv);
-	if (argc < 5)
-		small_sort(argc, &stack_a);
+	if (argc == 3)
+	{
+		if (stack_a->content > stack_a->next->content)
+			sa(&stack_a, true);
+	}
+	else if (argc == 4)
+		sort3(&stack_a);
+	else if (argc == 6)
+		sort5(&stack_a);
 	else if (argc < 15)
 		sort_halves(&stack_a, &stack_b);
-	else
+	else if (argc < 60)
 		sort_quarters(&stack_a, &stack_b);
+	else
+		sort_eighths(&stack_a, &stack_b);
 }
