@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_huge.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aboehm <aboehm@42adel.org.au>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/15 23:24:58 by aboehm            #+#    #+#             */
+/*   Updated: 2022/02/15 23:35:26 by aboehm           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
-static void second(t_list **stack_a, t_list **stack_b, Median *median);
-static void third(t_list **stack_a, t_list **stack_b, Median *median);
-static void fourth(t_list **stack_a, t_list **stack_b, Median *median);
+static void	second(t_list **stack_a, t_list **stack_b, t_median *median);
+static void	third(t_list **stack_a, t_list **stack_b, t_median *median);
+static void	fourth(t_list **stack_a, t_list **stack_b, t_median *median);
 
 void	sort_eighths(t_list **stack_a, t_list	**stack_b)
 {
-	Median	median;
+	t_median	median;
 
 	median = *find_median(stack_a, ft_lstsize(*stack_a));
-	while ((*stack_a)->flag == 0)             //First eighth
+	while ((*stack_a)->flag == 0)
 	{
 		if ((*stack_a)->content <= median.xs)
 			pb(stack_a, stack_b);
@@ -22,13 +34,16 @@ void	sort_eighths(t_list **stack_a, t_list	**stack_b)
 	second(stack_a, stack_b, &median);
 	third(stack_a, stack_b, &median);
 	fourth(stack_a, stack_b, &median);
+	while (*stack_b)
+		ft_small_pa(stack_a, stack_b);
+	free_stacks(stack_a, stack_b);
 }
 
-static void second(t_list **stack_a, t_list **stack_b, Median *median)
+static void	second(t_list **stack_a, t_list **stack_b, t_median *median)
 {
 	while (*stack_b)
 		ft_small_pa(stack_a, stack_b);
-	while ((*stack_a)->flag < 1)              //second eighth
+	while ((*stack_a)->flag < 1)
 	{
 		if ((*stack_a)->content <= (*median).s && (*stack_a)->flag < 1)
 			pb(stack_a, stack_b);
@@ -39,22 +54,22 @@ static void second(t_list **stack_a, t_list **stack_b, Median *median)
 		ra(stack_a, true);
 	while (*stack_b)
 		ft_small_pa(stack_a, stack_b);
-	while ((*stack_a)->flag < 1)              //third eighth
+	while ((*stack_a)->flag < 1)
 	{
 		if ((*stack_a)->content <= (*median).sm && (*stack_a)->flag < 1)
 			pb(stack_a, stack_b);
 		if ((*stack_a)->content > (*median).sm)
 			ra(stack_a, true);
 	}
-}
-
-static void third(t_list **stack_a, t_list **stack_b, Median *median)
-{
 	while ((*stack_a)->flag == 1)
 		ra(stack_a, true);
+}
+
+static void	third(t_list **stack_a, t_list **stack_b, t_median *median)
+{
 	while (*stack_b)
 		ft_small_pa(stack_a, stack_b);
-	while ((*stack_a)->flag < 1)              //fourth eighth
+	while ((*stack_a)->flag < 1)
 	{
 		if ((*stack_a)->content <= (*median).m && (*stack_a)->flag < 1)
 			pb(stack_a, stack_b);
@@ -65,7 +80,7 @@ static void third(t_list **stack_a, t_list **stack_b, Median *median)
 		ra(stack_a, true);
 	while (*stack_b)
 		ft_small_pa(stack_a, stack_b);
-	while ((*stack_a)->flag < 1)              //fifth eighth
+	while ((*stack_a)->flag < 1)
 	{
 		if ((*stack_a)->content <= (*median).ml && (*stack_a)->flag < 1)
 			pb(stack_a, stack_b);
@@ -78,9 +93,9 @@ static void third(t_list **stack_a, t_list **stack_b, Median *median)
 		ft_small_pa(stack_a, stack_b);
 }
 
-static void fourth(t_list **stack_a, t_list **stack_b, Median *median)
+static void	fourth(t_list **stack_a, t_list **stack_b, t_median *median)
 {
-	while ((*stack_a)->flag < 1)			  //6th eighth
+	while ((*stack_a)->flag < 1)
 	{
 		if ((*stack_a)->content <= (*median).l)
 			pb(stack_a, stack_b);
@@ -91,7 +106,7 @@ static void fourth(t_list **stack_a, t_list **stack_b, Median *median)
 		rra(stack_a, true);
 	while (*stack_b)
 		ft_small_pa(stack_a, stack_b);
-	while ((*stack_a)->flag < 1)			  //7th eighth
+	while ((*stack_a)->flag < 1)
 	{
 		if ((*stack_a)->content <= (*median).xl)
 			pb(stack_a, stack_b);
@@ -102,8 +117,6 @@ static void fourth(t_list **stack_a, t_list **stack_b, Median *median)
 		rra(stack_a, true);
 	while (*stack_b)
 		ft_small_pa(stack_a, stack_b);
-	while ((*stack_a)->flag < 1)			//8th eighth
+	while ((*stack_a)->flag < 1)
 		pb(stack_a, stack_b);
-	while (*stack_b)
-		ft_small_pa(stack_a, stack_b);
 }

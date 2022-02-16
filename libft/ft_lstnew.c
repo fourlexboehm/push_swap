@@ -6,7 +6,7 @@
 /*   By: aboehm <aboehm@42adel.org>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 14:30:43 by aboehm            #+#    #+#             */
-/*   Updated: 2021/09/13 18:31:14 by aboehm           ###   ########.fr       */
+/*   Updated: 2022/02/15 23:18:46 by aboehm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ t_list	*ft_lstnew(int content)
 	node->next = NULL;
 	return (node);
 }
-
 
 void	ft_new_node(t_list **list, int content)
 {

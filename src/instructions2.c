@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   instructions2.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aboehm <aboehm@42adel.org.au>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/15 23:19:58 by aboehm            #+#    #+#             */
+/*   Updated: 2022/02/15 23:22:06 by aboehm           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 void	ra(t_list **stack_a, bool flag)
@@ -9,7 +21,7 @@ the last one.*/
 
 	last = *stack_a;
 	temp = *stack_a;
-	*stack_a =  (*stack_a)->next;
+	*stack_a = (*stack_a)->next;
 	while (temp->next)
 		temp = temp->next;
 	last->next = NULL;
@@ -27,7 +39,7 @@ the last one.*/
 
 	last = *stack_b;
 	temp = last;
-	*stack_b =  (*stack_b)->next;
+	*stack_b = (*stack_b)->next;
 	while (temp->next)
 		temp = temp->next;
 	last->next = NULL;
@@ -45,11 +57,12 @@ rr : ra and rb at the same time. */
 	if (flag)
 		write(1, "rr\n", 3);
 }
-void    rra(t_list **list, bool flag)
+
+void	rra(t_list **list, bool flag)
 /* Last element becomes first*/
 {
-	t_list *curr;
-	t_list *prev;
+	t_list	*curr;
+	t_list	*prev;
 
 	curr = *list;
 	while (curr->next)
@@ -65,10 +78,10 @@ void    rra(t_list **list, bool flag)
 }
 
 void	rrb(t_list **stack_b, bool flag)
-//rra : reverse rotate b - shift down all elements of stack b by 1.
-//The last element becomes the first one.
+/*rra : reverse rotate b - shift down all elements of stack b by 1.
+The last element becomes the first one.*/
 {
-	t_list *temp;
+	t_list	*temp;
 	t_list	*first;
 
 	if ((*stack_b)->next == NULL)

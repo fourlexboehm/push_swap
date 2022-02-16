@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   list.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aboehm <aboehm@42adel.org.au>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/16 00:09:47 by aboehm            #+#    #+#             */
+/*   Updated: 2022/02/16 00:10:58 by aboehm           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 void	ft_lst_free(t_list	**lst)
 {
-	t_list *temp;
+	t_list	*temp;
+
 	temp = *lst;
 	while (*lst)
 	{
@@ -37,9 +50,9 @@ void	ft_lst_copy(t_list **input, t_list **output)
 	}
 }
 
-void ft_lstdel_front(t_list	**lst)
+void	ft_lstdel_front(t_list	**lst)
 {
-	t_list *temp;
+	t_list	*temp;
 
 	temp = *lst;
 	*lst = (*lst)->next;

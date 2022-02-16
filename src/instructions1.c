@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   instructions1.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aboehm <aboehm@42adel.org.au>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/15 23:53:15 by aboehm            #+#    #+#             */
+/*   Updated: 2022/02/15 23:53:48 by aboehm           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 void	sa(t_list **stack_a, bool flag)
@@ -41,7 +53,6 @@ void	ss(t_list **stack_a, t_list **stack_b)
 	sa(stack_a, false);
 	sb(stack_b, false);
 	write(1, "ss\n", 3);
-
 }
 
 void	pa(t_list **stack_a, t_list **stack_b)

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aboehm <aboehm@42adel.org.au>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/15 23:23:35 by aboehm            #+#    #+#             */
+/*   Updated: 2022/02/16 11:29:35 by aboehm           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
-static void reverse(t_list **stack_a)
+static void	reverse(t_list **stack_a)
 {
 	ra(stack_a, 1);
 	sa(stack_a, 1);
@@ -14,13 +26,12 @@ static void	sort3(t_list **stack_a)
 	int		n[3];
 	int		i;
 
-	i = 0;
+	i = -1;
 	temp = *stack_a;
-	while (i < 3)
+	while (++i < 3)
 	{
 		n[i] = temp->content;
 		temp = temp->next;
-		i++;
 	}
 	if (n[0] > n[1] && n[1] < n[2] && n[0] < n[2])
 		sa(stack_a, 1);
@@ -35,9 +46,10 @@ static void	sort3(t_list **stack_a)
 		sa(stack_a, 1);
 		ra(stack_a, 1);
 	}
+	free_stacks(stack_a, NULL);
 }
 
-void	ft_sort_five(t_list **stack_a, t_list **stack_b)
+void	sort5(t_list **stack_a, t_list **stack_b)
 /* this function will sort by ascending order into stack_a
 ** only works if there is 5 numbers */
 {
@@ -46,22 +58,9 @@ void	ft_sort_five(t_list **stack_a, t_list **stack_b)
 	sort3(stack_a);
 	pa(stack_a, stack_b);
 	pa(stack_a, stack_b);
+	free_stacks(stack_a, NULL);
 }
-static void	small_sort(int argc, t_list **stack_a)
-/* will determine which small_sort function to call */
-{
 
-}
-void	ft_sort_five(t_stack **stack_a, t_stack **stack_b)
-/* this function will sort by ascending order into stack_a
-** only works if there is 5 numbers */
-{
-	ft_push_smallest_a(stack_a, stack_b);
-	ft_push_smallest_a(stack_a, stack_b);
-	ft_sort_three(stack_a);
-	ft_pa(stack_a, stack_b);
-	ft_pa(stack_a, stack_b);
-}
 static void	ft_init_list(t_list **stack_a, char **argv)
 {
 	int		i;
@@ -79,10 +78,10 @@ static void	ft_init_list(t_list **stack_a, char **argv)
 	}
 }
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_list *stack_a;
-	t_list *stack_b;
+	t_list	*stack_a;
+	t_list	*stack_b;
 
 	stack_b = NULL;
 	if (argc < 2)
@@ -99,7 +98,7 @@ int		main(int argc, char **argv)
 	else if (argc == 4)
 		sort3(&stack_a);
 	else if (argc == 6)
-		sort5(&stack_a);
+		sort5(&stack_a, &stack_a);
 	else if (argc < 15)
 		sort_halves(&stack_a, &stack_b);
 	else if (argc < 60)

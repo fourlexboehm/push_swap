@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aboehm <aboehm@42adel.org.au>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/15 23:54:08 by aboehm            #+#    #+#             */
+/*   Updated: 2022/02/16 11:28:34 by aboehm           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
+static void	sort_quarters_helper(t_list **stack_a,
+				t_list **stack_b, t_median *median);
 
-static void sort_quarters_helper(t_list **stack_a, t_list **stack_b, Median *median);
-
-void sort_halves(t_list **stack_a, t_list	**stack_b)
+void	sort_halves(t_list **stack_a, t_list	**stack_b)
 {
-	Median	median;
+	t_median	median;
 
 	median = *find_median(stack_a, ft_lstsize(*stack_a));
 	while ((*stack_a)->flag == 0)
@@ -26,14 +38,15 @@ void sort_halves(t_list **stack_a, t_list	**stack_b)
 		ft_small_pa(stack_a, stack_b);
 	while (ft_find_smallest(stack_a, (*stack_a)->content) > 0)
 		rra(stack_a, true);
+	free_stacks(stack_a, stack_b);
 }
 
-void sort_quarters(t_list **stack_a, t_list	**stack_b)
+void	sort_quarters(t_list **stack_a, t_list	**stack_b)
 {
-	Median	median;
+	t_median	median;
 
 	median = *find_median(stack_a, ft_lstsize(*stack_a));
-	while ((*stack_a)->flag == 0)             //First quarter
+	while ((*stack_a)->flag == 0)
 	{
 		if ((*stack_a)->content <= median.s)
 			pb(stack_a, stack_b);
@@ -45,7 +58,7 @@ void sort_quarters(t_list **stack_a, t_list	**stack_b)
 	}
 	while (*stack_b)
 		ft_small_pa(stack_a, stack_b);
-	while ((*stack_a)->flag < 1)              //second quarter
+	while ((*stack_a)->flag < 1)
 	{
 		if ((*stack_a)->content <= median.m && (*stack_a)->flag < 1)
 			pb(stack_a, stack_b);
@@ -57,11 +70,12 @@ void sort_quarters(t_list **stack_a, t_list	**stack_b)
 	sort_quarters_helper(stack_a, stack_b, &median);
 }
 
-static void sort_quarters_helper(t_list **stack_a, t_list **stack_b, Median *median)
+static void	sort_quarters_helper(t_list **stack_a,
+				t_list **stack_b, t_median *median)
 {
 	while (*stack_b)
 		ft_small_pa(stack_a, stack_b);
-	while ((*stack_a)->flag < 1)			  //third quarter
+	while ((*stack_a)->flag < 1)
 	{
 		if ((*stack_a)->content <= (*median).l)
 			pb(stack_a, stack_b);
@@ -72,8 +86,27 @@ static void sort_quarters_helper(t_list **stack_a, t_list **stack_b, Median *med
 		rra(stack_a, true);
 	while (*stack_b)
 		ft_small_pa(stack_a, stack_b);
-	while ((*stack_a)->flag < 1)			//fourth quarter
+	while ((*stack_a)->flag < 1)
 		pb(stack_a, stack_b);
 	while (*stack_b)
 		ft_small_pa(stack_a, stack_b);
+	free_stacks(stack_a, stack_b);
+}
+
+void	free_stacks(t_list **stack_a, t_list **stack_b)
+{
+	t_list	*temp;
+
+	while (*stack_a)
+	{
+		temp = *stack_a;
+		*stack_a = (*stack_a)->next;
+		free(temp);
+	}
+	while (*stack_b)
+	{
+		temp = *stack_b;
+		*stack_b = (*stack_b)->next;
+		free(temp);
+	}
 }

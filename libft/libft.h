@@ -6,7 +6,7 @@
 /*   By: aboehm <aboehm@42adel.org>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 20:35:40 by aboehm            #+#    #+#             */
-/*   Updated: 2022/01/21 20:57:23 by aboehm           ###   ########.fr       */
+/*   Updated: 2022/02/15 23:18:24 by aboehm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 typedef struct s_list
 {
-	int 			content;
+	int				content;
 	int				flag;
 	struct s_list	*next;
 }	t_list;
@@ -83,8 +83,5 @@ void	ft_putnbr_fd(int n, int fd);
 void	ft_putendl_fd(char *s, int fd);
 char	*ft_strndup(const char *s1, size_t n);
 void	ft_new_node(t_list **list, int content);
-
-
-
 
 #endif
