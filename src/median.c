@@ -6,26 +6,28 @@
 /*   By: aboehm <aboehm@42adel.org.au>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 23:57:34 by aboehm            #+#    #+#             */
-/*   Updated: 2022/02/16 10:42:42 by aboehm           ###   ########.fr       */
+/*   Updated: 2022/02/19 17:07:37 by aboehm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	swap(int *xp, int *yp)
+static bool	swap(int *xp, int *yp)
 {
 	int	temp;
 
 	temp = *xp;
 	*xp = *yp;
 	*yp = temp;
+	return (true);
 }
 
 static void	bubble_sort(int arr[], int n)
 // A function to implement bubble sort
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	bool	swapped;
 
 	i = 0;
 	while (i < n - 1)
@@ -34,11 +36,13 @@ static void	bubble_sort(int arr[], int n)
 		while (j < n - i - 1)
 		{
 			if (arr[j] > arr[j + 1])
-				swap(&arr[j], &arr[j + 1]);
+				swapped = swap(&arr[j], &arr[j + 1]);
 			j++;
 		}
 		i++;
 	}
+	if (!swapped)
+		exit(0);
 }
 
 static void	assign(t_median *median, int *array, int l)

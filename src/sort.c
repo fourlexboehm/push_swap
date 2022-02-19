@@ -6,7 +6,7 @@
 /*   By: aboehm <aboehm@42adel.org.au>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 23:54:08 by aboehm            #+#    #+#             */
-/*   Updated: 2022/02/19 16:31:19 by aboehm           ###   ########.fr       */
+/*   Updated: 2022/02/19 17:13:03 by aboehm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ static void	sort_quarters_helper(t_list **stack_a,
 
 void	sort_halves(t_list **stack_a, t_list	**stack_b)
 {
-	t_median	median;
+	t_median	*median;
 
-	median = *find_median(stack_a, ft_lstsize(*stack_a));
+	median = find_median(stack_a, ft_lstsize(*stack_a));
 	while ((*stack_a)->flag == 0)
 	{
-		if ((*stack_a)->content <= median.m)
+		if ((*stack_a)->content <= median->m)
 			pb(stack_a, stack_b);
 		else if ((*stack_a)->flag == 0)
 		{
@@ -44,12 +44,12 @@ void	sort_halves(t_list **stack_a, t_list	**stack_b)
 
 void	sort_quarters(t_list **stack_a, t_list	**stack_b)
 {
-	t_median	median;
+	t_median	*median;
 
-	median = *find_median(stack_a, ft_lstsize(*stack_a));
+	median = find_median(stack_a, ft_lstsize(*stack_a));
 	while ((*stack_a)->flag == 0)
 	{
-		if ((*stack_a)->content <= median.s)
+		if ((*stack_a)->content <= median->s)
 			pb(stack_a, stack_b);
 		else if ((*stack_a)->flag == 0)
 		{
@@ -61,14 +61,14 @@ void	sort_quarters(t_list **stack_a, t_list	**stack_b)
 		ft_small_pa(stack_a, stack_b);
 	while ((*stack_a)->flag < 1)
 	{
-		if ((*stack_a)->content <= median.m && (*stack_a)->flag < 1)
+		if ((*stack_a)->content <= median->m && (*stack_a)->flag < 1)
 			pb(stack_a, stack_b);
-		if ((*stack_a)->content > median.m)
+		if ((*stack_a)->content > median->m)
 			ra(stack_a, true);
 	}
 	while ((*stack_a)->flag == 1)
 		ra(stack_a, true);
-	sort_quarters_helper(stack_a, stack_b, &median);
+	sort_quarters_helper(stack_a, stack_b, median);
 }
 
 static void	sort_quarters_helper(t_list **stack_a,

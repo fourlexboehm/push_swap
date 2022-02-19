@@ -6,7 +6,7 @@
 /*   By: aboehm <aboehm@42adel.org.au>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 23:24:58 by aboehm            #+#    #+#             */
-/*   Updated: 2022/02/19 16:33:59 by aboehm           ###   ########.fr       */
+/*   Updated: 2022/02/19 17:11:52 by aboehm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ static void	fourth(t_list **stack_a, t_list **stack_b, t_median *median);
 
 void	sort_eighths(t_list **stack_a, t_list	**stack_b)
 {
-	t_median	median;
+	t_median	*median;
 
-	median = *find_median(stack_a, ft_lstsize(*stack_a));
+	median = find_median(stack_a, ft_lstsize(*stack_a));
 	while ((*stack_a)->flag == 0)
 	{
-		if ((*stack_a)->content <= median.xs)
+		if ((*stack_a)->content <= median->xs)
 			pb(stack_a, stack_b);
 		else if ((*stack_a)->flag == 0)
 		{
@@ -31,9 +31,9 @@ void	sort_eighths(t_list **stack_a, t_list	**stack_b)
 			ra(stack_a, true);
 		}
 	}
-	second(stack_a, stack_b, &median);
-	third(stack_a, stack_b, &median);
-	fourth(stack_a, stack_b, &median);
+	second(stack_a, stack_b, median);
+	third(stack_a, stack_b, median);
+	fourth(stack_a, stack_b, median);
 	while (*stack_b)
 		ft_small_pa(stack_a, stack_b);
 	ft_lst_free(stack_a);
