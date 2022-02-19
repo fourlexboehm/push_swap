@@ -46,7 +46,7 @@ static void	sort3(t_list **stack_a)
 		sa(stack_a, 1);
 		ra(stack_a, 1);
 	}
-	free_stacks(stack_a, NULL);
+	ft_lst_free(stack_a);
 }
 
 void	sort5(t_list **stack_a, t_list **stack_b)
@@ -58,7 +58,7 @@ void	sort5(t_list **stack_a, t_list **stack_b)
 	sort3(stack_a);
 	pa(stack_a, stack_b);
 	pa(stack_a, stack_b);
-	free_stacks(stack_a, NULL);
+	ft_lst_free(stack_a);
 }
 
 static void	ft_init_list(t_list **stack_a, char **argv)
@@ -84,11 +84,8 @@ int	main(int argc, char **argv)
 	t_list	*stack_b;
 
 	stack_b = NULL;
-	if (argc < 2)
-	{
-		ft_printf("Include n to be sorted as parameters.");
+	if (argc < 3)
 		return (0);
-	}
 	ft_init_list(&stack_a, argv);
 	if (argc == 3)
 	{
@@ -98,7 +95,7 @@ int	main(int argc, char **argv)
 	else if (argc == 4)
 		sort3(&stack_a);
 	else if (argc == 6)
-		sort5(&stack_a, &stack_a);
+		sort5(&stack_a, &stack_b);
 	else if (argc < 15)
 		sort_halves(&stack_a, &stack_b);
 	else if (argc < 60)

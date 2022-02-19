@@ -19,6 +19,8 @@ the last one.*/
 	t_list	*temp;
 	t_list	*last;
 
+	if ((*stack_a)->next == NULL)
+		return ;
 	last = *stack_a;
 	temp = *stack_a;
 	*stack_a = (*stack_a)->next;
@@ -37,6 +39,8 @@ the last one.*/
 	t_list	*temp;
 	t_list	*last;
 
+	if ((*stack_b)->next == NULL)
+		return ;
 	last = *stack_b;
 	temp = last;
 	*stack_b = (*stack_b)->next;

@@ -7,6 +7,11 @@
 *.obj
 *.elf
 
+.idea/.gitignore
+.idea/misc.xml
+.idea/printf.iml
+.idea/vcs.xml
+
 # Linker output
 *.ilk
 *.map

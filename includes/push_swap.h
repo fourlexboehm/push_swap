@@ -47,6 +47,6 @@ int			ft_error(char **argv);
 t_median	*find_median(t_list **lst, int l);
 int			ft_find_smallest(t_list **stack, int x);
 void		ft_push_smallest_a(t_list **stack_a, t_list **stack_b);
-void		free_stacks(t_list **stack_a, t_list **stack_b);
+void		ft_lst_free(t_list	**lst);
 
 #endif

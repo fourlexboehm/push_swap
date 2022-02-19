@@ -6,7 +6,7 @@
 /*   By: aboehm <aboehm@42adel.org.au>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 23:54:08 by aboehm            #+#    #+#             */
-/*   Updated: 2022/02/16 11:28:34 by aboehm           ###   ########.fr       */
+/*   Updated: 2022/02/16 13:24:41 by aboehm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	sort_halves(t_list **stack_a, t_list	**stack_b)
 		ft_small_pa(stack_a, stack_b);
 	while (ft_find_smallest(stack_a, (*stack_a)->content) > 0)
 		rra(stack_a, true);
-	free_stacks(stack_a, stack_b);
+	ft_lst_free(stack_a);
 }
 
 void	sort_quarters(t_list **stack_a, t_list	**stack_b)
@@ -90,23 +90,5 @@ static void	sort_quarters_helper(t_list **stack_a,
 		pb(stack_a, stack_b);
 	while (*stack_b)
 		ft_small_pa(stack_a, stack_b);
-	free_stacks(stack_a, stack_b);
-}
-
-void	free_stacks(t_list **stack_a, t_list **stack_b)
-{
-	t_list	*temp;
-
-	while (*stack_a)
-	{
-		temp = *stack_a;
-		*stack_a = (*stack_a)->next;
-		free(temp);
-	}
-	while (*stack_b)
-	{
-		temp = *stack_b;
-		*stack_b = (*stack_b)->next;
-		free(temp);
-	}
+	ft_lst_free(stack_a);
 }

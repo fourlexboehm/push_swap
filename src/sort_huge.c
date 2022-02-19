@@ -36,7 +36,7 @@ void	sort_eighths(t_list **stack_a, t_list	**stack_b)
 	fourth(stack_a, stack_b, &median);
 	while (*stack_b)
 		ft_small_pa(stack_a, stack_b);
-	free_stacks(stack_a, stack_b);
+	ft_lst_free(stack_a);
 }
 
 static void	second(t_list **stack_a, t_list **stack_b, t_median *median)

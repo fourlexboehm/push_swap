@@ -6,7 +6,7 @@
 /*   By: aboehm <aboehm@42adel.org>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 20:35:40 by aboehm            #+#    #+#             */
-/*   Updated: 2022/02/15 23:18:24 by aboehm           ###   ########.fr       */
+/*   Updated: 2022/02/16 16:59:10 by aboehm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 typedef struct s_list
 {
-	int				content;
+	long			content;
 	int				flag;
 	struct s_list	*next;
 }	t_list;
