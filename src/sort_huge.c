@@ -6,7 +6,7 @@
 /*   By: aboehm <aboehm@42adel.org.au>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 23:24:58 by aboehm            #+#    #+#             */
-/*   Updated: 2022/02/15 23:35:26 by aboehm           ###   ########.fr       */
+/*   Updated: 2022/02/19 16:33:59 by aboehm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	sort_eighths(t_list **stack_a, t_list	**stack_b)
 	while (*stack_b)
 		ft_small_pa(stack_a, stack_b);
 	ft_lst_free(stack_a);
+	free(median);
 }
 
 static void	second(t_list **stack_a, t_list **stack_b, t_median *median)

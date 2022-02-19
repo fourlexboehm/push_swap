@@ -6,7 +6,7 @@
 /*   By: aboehm <aboehm@42adel.org.au>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 23:54:08 by aboehm            #+#    #+#             */
-/*   Updated: 2022/02/16 13:24:41 by aboehm           ###   ########.fr       */
+/*   Updated: 2022/02/19 16:31:19 by aboehm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	sort_halves(t_list **stack_a, t_list	**stack_b)
 	while (ft_find_smallest(stack_a, (*stack_a)->content) > 0)
 		rra(stack_a, true);
 	ft_lst_free(stack_a);
+	free(median);
 }
 
 void	sort_quarters(t_list **stack_a, t_list	**stack_b)
@@ -91,4 +92,5 @@ static void	sort_quarters_helper(t_list **stack_a,
 	while (*stack_b)
 		ft_small_pa(stack_a, stack_b);
 	ft_lst_free(stack_a);
+	free(median);
 }
