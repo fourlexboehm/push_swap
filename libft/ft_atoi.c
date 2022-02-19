@@ -6,13 +6,13 @@
 /*   By: aboehm <aboehm@42adel.org>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 20:35:49 by aboehm            #+#    #+#             */
-/*   Updated: 2021/09/07 19:48:11 by aboehm           ###   ########.fr       */
+/*   Updated: 2022/02/19 15:14:55 by aboehm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	int		i;
 	int		n;

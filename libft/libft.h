@@ -6,7 +6,7 @@
 /*   By: aboehm <aboehm@42adel.org>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 20:35:40 by aboehm            #+#    #+#             */
-/*   Updated: 2022/02/16 16:59:10 by aboehm           ###   ########.fr       */
+/*   Updated: 2022/02/19 15:15:14 by aboehm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
-int		ft_atoi(const char *str);
+long	ft_atoi(const char *str);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_strlen(char *str);
 size_t	ft_strnlen(const char *str, size_t size);
